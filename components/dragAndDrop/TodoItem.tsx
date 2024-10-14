@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { Card, CardContent, Typography, Chip, Divider, IconButton, Box } from '@mui/material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
