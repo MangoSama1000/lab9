@@ -19,9 +19,7 @@ type TodoItemProps = {
 
 const TodoItem = (props: TodoItemProps) => {
     const { todo, refreshTodos } = props;
-
     const [editTodoShow, setEditTodoShow] = useState<boolean>(false);
-
     const { userId } = useAuth();
     const supabase = useSupabase();
 
@@ -39,11 +37,9 @@ const TodoItem = (props: TodoItemProps) => {
             .from('todos')
             .delete()
             .match({ id, clerk_user_id: userId });
-
         if (error) {
-            console.log(error.message);
+            console.log(error.message); // consider replacing with toast.error in production
         }
-
         toast.success('Todo deleted successfully.');
         refreshTodos();
     };
@@ -62,7 +58,7 @@ const TodoItem = (props: TodoItemProps) => {
             <div
                 style={{
                     transform: CSS.Translate.toString(transform),
-                    opacity: active ? (active.id === todo.id ? 1 : 0.5) : 1,
+                    opacity: active ? 1 : 0.5,
                     borderRadius: '8px',
                     position: 'relative',
                     cursor: 'grab',
